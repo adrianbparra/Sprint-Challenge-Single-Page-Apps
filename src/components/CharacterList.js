@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CharacterCard from "./CharacterCard";
+import { Container, Row, Col } from 'reactstrap';
+import "../index.css";
 
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
@@ -21,11 +23,13 @@ export default function CharacterList() {
   }, []);
 
   return (
-    <section className="character-list">
-      {characters.map(character => {
-        
-        return <CharacterCard character={character} />
-      })}
-    </section>
+    <Container className="character-list">
+      <Row>
+          {characters.map(character => {
+            
+            return <CharacterCard key={character.id} character={character} />
+          })}
+      </Row>
+    </Container>
   );
 }
